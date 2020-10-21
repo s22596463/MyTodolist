@@ -27,18 +27,34 @@ class TodolistViewController:  UIViewController,UITableViewDataSource,UITableVie
     func insert(at indices: [Int]) {
         //print("INSERT!")
         let indexPaths = indices.map { IndexPath(row: $0, section: 0) }
-        let contentOffset = tableView.contentOffset
-//        DispatchQueue.main.async {
-            self.tableView.beginUpdates()
-            self.tableView.insertRows(at: indexPaths, with: .fade)
-            self.tableView.endUpdates()
-            self.tableView.setContentOffset(contentOffset, animated: false) }
-//        tableView.reloadData()
-//    }
+        print("insert indexPaths\(indexPaths)")
+        //let contentOffset = tableView.contentOffset
+        //DispatchQueue.main.async {
+        //self.tableView.beginUpdates()
+        //self.tableView.insertRows(at: indexPaths, with: .automatic)
+        //self.tableView.endUpdates()
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        tableView.reloadData()
+        //}
+    }
+    
+    func add(at indices: [Int]){
+        let indexPaths = indices.map { IndexPath(row: $0, section: 0) }
+        print("add indexPaths\(indexPaths)")
+        DispatchQueue.main.async {
+            self.tableView.insertRows(at: indexPaths, with: .automatic)
+        }
+    }
+    
+    func delete(at indices: [Int]) {
+        let indexPaths = indices.map { IndexPath(row: $0, section: 0)}
+        print("insert indexPaths\(indexPaths)")
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //self.view.addSubview(self.tableView)
         SetUpUI()
         tableView.delegate = self
@@ -74,23 +90,20 @@ class TodolistViewController:  UIViewController,UITableViewDataSource,UITableVie
         
     }
     
-//    @objc func reloadData(){
-//        self.tableView.reloadData()
-//    }
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("tableView count:\(controller.container.count)")
-        return controller.container.count
+        return self.controller.container.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellViewModel = controller.container[indexPath.row]
+        let cellViewModel = self.controller.container[indexPath.row]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as? TodolistTableViewCell else{
             assert(false, "Unhandled tableview cell")
             return UITableViewCell()
         }
         cell.setup(cellViewModel: cellViewModel)
+        print("cell.setup")
+        print("\(cellViewModel)")
         //print("cellForRowAt indexPath.row = \(indexPath.row)")
         return cell
     }
@@ -102,15 +115,18 @@ class TodolistViewController:  UIViewController,UITableViewDataSource,UITableVie
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .normal, title: "Delete", handler: { (action, view, completionHandler) in
-            //delete func
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete"){ (action, view, completionHandler) in
+            let listToRemove = self.controller.container[indexPath.row]
+            DBManager.shared.deleteList(listToRemove: listToRemove)
+            self.controller.delete(at: indexPath.row)
             completionHandler(true)
-        })
-        let doneAction = UIContextualAction(style: .normal, title: "Done", handler: { (action, view, completionHandler) in
+        }
+        let doneAction = UIContextualAction(style: .normal, title: "Done"){ (action, view, completionHandler) in
             completionHandler(true)
-        })
-         let configuration = UISwipeActionsConfiguration(actions: [deleteAction, doneAction])
-        configuration.performsFirstActionWithFullSwipe = false
+        }
+        doneAction.backgroundColor = UIColor.getCustomBlueColor()
+        let configuration = UISwipeActionsConfiguration(actions: [ doneAction, deleteAction])
+        //configuration.performsFirstActionWithFullSwipe = false
         return configuration
     }
     

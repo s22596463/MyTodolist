@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 class addViewController :UIViewController {
     
     weak var preVC: TodolistViewController?
@@ -32,18 +33,32 @@ class addViewController :UIViewController {
     }
     
     @objc func addList(){
+        self.view.endEditing(true)
+        
         DBManager.shared.addList(attributeInfo: [
-            "title": "wow",
-            "isPinned": true
+            "title": titleTextField.text ?? "default",
+            "isPinned": pinSwitch.isOn
         ])
         
+        self.preVC?.controller.add()
         self.navigationController?.dismiss(animated: false, completion:{
-            //self.preVC?.reloadData()
-            self.preVC?.controller.totalCount += 1
-            self.preVC?.controller.willScrollTo(index: (self.preVC?.controller.container.count)!-1)
-            //print(self.preVC?.controller.container.count)
+            print("dimiss")
+            let scrollToRow = IndexPath(row: (self.preVC?.controller.totalCount ?? 1)-1 , section: 0)
+            self.preVC?.tableView.scrollToRow(at: scrollToRow, at: .bottom, animated: true)
         })
 
+    }
+    
+}
+
+extension addViewController: UITextFieldDelegate{
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 }

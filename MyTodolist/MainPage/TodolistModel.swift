@@ -6,8 +6,8 @@
 //  Copyright © 2020 謝宛軒. All rights reserved.
 //
 
-import Foundation
-
-struct TodolistModel {
-    var title : String
-}
+//import Foundation
+//
+//struct TodolistModel {
+//    var title : String
+//}

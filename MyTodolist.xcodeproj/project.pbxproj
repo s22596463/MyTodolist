@@ -24,8 +24,8 @@
 		4B3CA7482538345400D17FA8 /* TodolistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA7472538345400D17FA8 /* TodolistModel.swift */; };
 		4B3CA74C2538425400D17FA8 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA74B2538425400D17FA8 /* AddViewController.swift */; };
 		4B3CA75125384AAF00D17FA8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA75025384AAF00D17FA8 /* UIColor.swift */; };
-		4B3CA75A25395D0C00D17FA8 /* Todolist+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA75825395D0C00D17FA8 /* Todolist+CoreDataClass.swift */; };
-		4B3CA75B25395D0C00D17FA8 /* Todolist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA75925395D0C00D17FA8 /* Todolist+CoreDataProperties.swift */; };
+		4B459883253F49C10077F99A /* Todolist+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B459881253F49C10077F99A /* Todolist+CoreDataClass.swift */; };
+		4B459884253F49C10077F99A /* Todolist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B459882253F49C10077F99A /* Todolist+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +48,8 @@
 		4B3CA7472538345400D17FA8 /* TodolistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistModel.swift; sourceTree = "<group>"; };
 		4B3CA74B2538425400D17FA8 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		4B3CA75025384AAF00D17FA8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		4B3CA75825395D0C00D17FA8 /* Todolist+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todolist+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4B3CA75925395D0C00D17FA8 /* Todolist+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todolist+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4B459881253F49C10077F99A /* Todolist+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todolist+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4B459882253F49C10077F99A /* Todolist+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todolist+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,11 +82,11 @@
 		4B3CA713253829FE00D17FA8 /* MyTodolist */ = {
 			isa = PBXGroup;
 			children = (
+				4B459885253FF04E0077F99A /* Model */,
 				4B3CA74F25384A9D00D17FA8 /* Extension */,
 				4B3CA74A2538423800D17FA8 /* AddPage */,
 				4B3CA7492538420100D17FA8 /* MainPage */,
 				4B3CA7382538331E00D17FA8 /* Protocol */,
-				4B3CA737253832A700D17FA8 /* Model */,
 				4B3CA714253829FE00D17FA8 /* AppDelegate.swift */,
 				4B3CA716253829FE00D17FA8 /* SceneDelegate.swift */,
 				4B3CA718253829FE00D17FA8 /* ViewController.swift */,
@@ -98,15 +98,6 @@
 				4B3CA7452538343600D17FA8 /* DBManager.swift */,
 			);
 			path = MyTodolist;
-			sourceTree = "<group>";
-		};
-		4B3CA737253832A700D17FA8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4B3CA75825395D0C00D17FA8 /* Todolist+CoreDataClass.swift */,
-				4B3CA75925395D0C00D17FA8 /* Todolist+CoreDataProperties.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		4B3CA7382538331E00D17FA8 /* Protocol */ = {
@@ -144,6 +135,15 @@
 				4B3CA75025384AAF00D17FA8 /* UIColor.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		4B459885253FF04E0077F99A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4B459881253F49C10077F99A /* Todolist+CoreDataClass.swift */,
+				4B459882253F49C10077F99A /* Todolist+CoreDataProperties.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,14 +221,14 @@
 				4B3CA73C2538336200D17FA8 /* ListViewHost.swift in Sources */,
 				4B3CA7462538343600D17FA8 /* DBManager.swift in Sources */,
 				4B3CA73E2538339600D17FA8 /* TodolistViewController.swift in Sources */,
-				4B3CA75A25395D0C00D17FA8 /* Todolist+CoreDataClass.swift in Sources */,
+				4B459883253F49C10077F99A /* Todolist+CoreDataClass.swift in Sources */,
 				4B3CA75125384AAF00D17FA8 /* UIColor.swift in Sources */,
 				4B3CA74C2538425400D17FA8 /* AddViewController.swift in Sources */,
 				4B3CA7442538341300D17FA8 /* TodolistCellViewModel.swift in Sources */,
 				4B3CA742253833F000D17FA8 /* TodolistTableViewCell.swift in Sources */,
 				4B3CA7482538345400D17FA8 /* TodolistModel.swift in Sources */,
 				4B3CA715253829FE00D17FA8 /* AppDelegate.swift in Sources */,
-				4B3CA75B25395D0C00D17FA8 /* Todolist+CoreDataProperties.swift in Sources */,
+				4B459884253F49C10077F99A /* Todolist+CoreDataProperties.swift in Sources */,
 				4B3CA740253833BA00D17FA8 /* TodolistController.swift in Sources */,
 				4B3CA73A2538333A00D17FA8 /* Pagination.swift in Sources */,
 				4B3CA717253829FE00D17FA8 /* SceneDelegate.swift in Sources */,

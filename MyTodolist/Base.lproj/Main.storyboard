@@ -15,20 +15,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ah6-zj-67i">
-                                <rect key="frame" x="0.0" y="91" width="414" height="792"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ah6-zj-67i">
+                                <rect key="frame" x="0.0" y="91" width="414" height="743"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCell" id="ePQ-is-zFX" customClass="TodolistTableViewCell" customModule="MyTodolist" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ePQ-is-zFX" id="BKA-bQ-Cza">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yl-T6-q9r">
-                                                    <rect key="frame" x="40" y="7" width="59.5" height="30"/>
+                                                    <rect key="frame" x="40" y="25" width="59.5" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="JBD-iv-YHN"/>
                                                     </constraints>
@@ -36,13 +36,23 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cDV-4L-fdb">
+                                                    <rect key="frame" x="334" y="24.5" width="30" height="31.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="r3B-q5-rl0"/>
+                                                        <constraint firstAttribute="width" constant="30" id="vl2-GT-t8S"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="9yl-T6-q9r" firstAttribute="centerY" secondItem="BKA-bQ-Cza" secondAttribute="centerY" id="P3M-Tg-w5R"/>
+                                                <constraint firstItem="cDV-4L-fdb" firstAttribute="centerY" secondItem="9yl-T6-q9r" secondAttribute="centerY" id="QtP-Xl-b6P"/>
+                                                <constraint firstAttribute="trailing" secondItem="cDV-4L-fdb" secondAttribute="trailing" constant="50" id="mP8-F9-fmD"/>
                                                 <constraint firstItem="9yl-T6-q9r" firstAttribute="leading" secondItem="BKA-bQ-Cza" secondAttribute="leadingMargin" constant="20" id="qbe-Wf-cot"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="img_isPinned" destination="cDV-4L-fdb" id="hcD-yN-wg1"/>
                                             <outlet property="label" destination="9yl-T6-q9r" id="pCj-3d-2OW"/>
                                         </connections>
                                     </tableViewCell>
@@ -161,4 +171,7 @@
             <point key="canvasLocation" x="1048" y="909"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pin.fill" catalog="system" width="119" height="128"/>
+    </resources>
 </document>

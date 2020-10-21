@@ -10,4 +10,5 @@ import Foundation
 
 struct TodolistCellViewModel{
     var titleText: String
+    var isPinned: Bool
 }

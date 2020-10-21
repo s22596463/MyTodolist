@@ -12,11 +12,11 @@ import UIKit
 //負責收到從Controller送出的insert index array告訴ViewController
 protocol ListViewHostProtocol: AnyObject {
     func insert(at indices: [Int])
+    func add(at indices: [Int])
+    func delete(at indices: [Int])
 }
 
 extension ListViewHostProtocol{
-    func insert(at indices: [Int]){
-    }
 }
 
 //extension ListViewHostProtocol where Self: UITableViewController{
