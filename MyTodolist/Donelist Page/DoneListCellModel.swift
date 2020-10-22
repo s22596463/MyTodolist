@@ -1,14 +1,13 @@
 //
-//  TodolistCellViewModel.swift
+//  DonelistCellModel.swift
 //  MyTodolist
 //
-//  Created by 謝宛軒 on 2020/10/15.
+//  Created by 謝宛軒 on 2020/10/22.
 //  Copyright © 2020 謝宛軒. All rights reserved.
 //
 
 import Foundation
 
-struct TodolistCellViewModel{
+struct DoneListCellModel{
     var titleText: String
-    var isPinned: Bool
 }

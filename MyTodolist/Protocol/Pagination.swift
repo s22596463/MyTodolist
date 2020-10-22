@@ -22,15 +22,15 @@ protocol PaginationController: AnyObject{
     
     func willScrollTo(index: Int) //extension中實作，所有controller共享的邏輯
     
-    func add()
-    func delete(at: Int)
+    //func add()
+    //func delete(at: Int)
     //func insert(at: [Int])
     
     func initFetchData()
     func fetchData(at offset: Int, completion: @escaping CompleteClosure)
     //func fetchData(at offset: Int) -> [T]
     //offset從哪裡開始抓資料 //留給不同Controller自己實作
-    func fetchRestData(completion: @escaping CompleteClosure)
+
 }
 
 extension PaginationController{
@@ -40,15 +40,12 @@ extension PaginationController{
     
     func willScrollTo(index: Int){
         
-        //print("index:\(index)")
-        //print("container.count:\(container.count)")
-        print("willScrollTo")
-        print("index:\(index)")
-        print("container.count:\(container.count)")
-        print("totalCount:\(totalCount)")
+//        print("willScrollTo")
+//        print("index:\(index)")
+//        print("container.count:\(container.count)")
+//        print("totalCount:\(totalCount)")
         
         if index == container.count-1 && container.count < totalCount || container.count == 0{
-            print("willScrollTo IN")
             fetchData(at: container.count){
                 let from = self.container.count
                 self.container.append(contentsOf: $0)
@@ -59,25 +56,6 @@ extension PaginationController{
             }
         }
         
-    }
-    
-    func add(){
-        fetchRestData{
-            let from = self.container.count
-            self.container.append(contentsOf: $0)
-            let to = self.container.count
-            let indicesToBeInserted = [Int](from..<to)
-            print("indicesToBeInserted\(indicesToBeInserted)")
-            self.listViewHost?.add(at: indicesToBeInserted)
-        }
-    }
-    
-    func delete(at: Int){
-        self.container.remove(at: at)
-        var indicesToBedeleted = [Int]()
-        indicesToBedeleted.append(at)
-        //let indicesToBedeleted = [Int](from..<to)
-        self.listViewHost?.delete(at: indicesToBedeleted)
     }
     
 }

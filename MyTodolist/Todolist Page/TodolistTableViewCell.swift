@@ -13,15 +13,15 @@ class TodolistTableViewCell: UITableViewCell{
     
     @IBOutlet var label: UILabel!
     @IBOutlet var img_isPinned: UIImageView!
-    
-    func setup(cellViewModel: TodolistCellViewModel){
-        label.text = cellViewModel.titleText
+        
+    func setup(cellModel: TodolistCellModel){
+        self.selectionStyle = .none
+        label.text = cellModel.titleText
         label.isHidden = false
-        if cellViewModel.isPinned{
+        if cellModel.isPinned{
             img_isPinned.isHidden = false
         }else{
             img_isPinned.isHidden = true
-            
         }
     }
     

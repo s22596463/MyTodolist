@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 import CoreData
 
-
-
 class DBManager{
     
     static let shared = DBManager(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext )
@@ -20,30 +18,59 @@ class DBManager{
     
     private init(context: NSManagedObjectContext){
         self.myContext = context
-        //UserDefaults.standard.set(1, forKey: "idSeq_list")
     }
     
     
-    func fetchAllList() -> [Todolist]{
-        var lists: [Todolist]?
-        try! myContext.fetch(Todolist.fetchRequest())
+//    func fetchAllList() -> [Todolist]{
+//        var lists: [Todolist]?
+//        try! myContext.fetch(Todolist.fetchRequest())
+//        do {
+//            lists = try myContext.fetch(Todolist.fetchRequest())
+//        }
+//        catch{
+//        }
+//        let lists_all = lists ?? [Todolist]()
+//        return lists_all
+//    }
+    
+    //fetch pinned and undone list
+    func fetchPinnedList() -> [Todolist]{
+        var lists = [Todolist]()
+        //try! myContext.fetch(Todolist.fetchRequest())
         do {
-            lists = try myContext.fetch(Todolist.fetchRequest())
+            let request = Todolist.fetchRequest() as NSFetchRequest<Todolist>
+            let pred = NSPredicate(format:"isPinned = %d AND isDone = %d",true,false)
+            request.predicate = pred
+            lists = try myContext.fetch(request)
         }
         catch{
         }
-        let lists_all = lists ?? [Todolist]()
-        return lists_all
+        
+        return lists
     }
     
-    func fetchList(offset: Int, perpage: Int) -> (list: [Todolist], totalResults: Int){
+    //fetch unpinned and undone list
+    func fetchUnpinnedList() -> [Todolist]{
+        var lists = [Todolist]()
+        do {
+            let request = Todolist.fetchRequest() as NSFetchRequest<Todolist>
+            let pred = NSPredicate(format:"isPinned = %d AND isDone = %d",false,false)
+            request.predicate = pred
+            lists = try myContext.fetch(request)
+        }
+        catch{
+        }
+        return lists
+    }
+    
+    //fetch done list
+    func fetchDoneList(offset: Int, perpage: Int) -> (list: [Todolist], totalResults: Int){
         var lists = [Todolist]()
         //try! myContext.fetch(Todolist.fetchRequest())
         do {
             let request = Todolist.fetchRequest() as NSFetchRequest<Todolist>
             request.fetchLimit = perpage
             request.fetchOffset = offset
-            //let pred = NSPredicate(format:"")
             lists = try myContext.fetch(request)
         }
         catch{
@@ -54,46 +81,32 @@ class DBManager{
         return (lists, totalResults)
     }
     
-    func fetchRestList(offset: Int) -> [Todolist]{
-        var list: [Todolist]?
-        
-        do {
-            let request = Todolist.fetchRequest() as NSFetchRequest<Todolist>
-            //request.fetchLimit =
-            request.fetchOffset = offset
-            list = try myContext.fetch(request)
-        }
-        catch{
-        }
-        print("fetchRestList\(list)")
-        return list!
-    }
-    
     func addList(attributeInfo: [String:Any]){
-        //let idSeq = UserDefaults.standard.integer(forKey: "idSeq_list")
+        
         let list = Todolist(context: myContext)
-        //list.id = Int32(idSeq+1)
         list.title = attributeInfo["title"] as? String
         list.isPinned = attributeInfo["isPinned"] as! Bool
+        list.id = attributeInfo["id"] as! Int32
         do{
             try myContext.save()
-            //id auto increment
-            //UserDefaults.standard.set(list.id, forKey: "idSeq_list")
         }
         catch{
         }
-        
+        let id = UserDefaults.standard.integer(forKey: "id")
+        //id auto increment
+        UserDefaults.standard.set(id+1, forKey: "id")
     }
     
-    func deleteList(listToRemove: TodolistCellViewModel){
+    func deleteList(listToRemove: TodolistCellModel){
+        
         let request = NSFetchRequest<NSFetchRequestResult>(
             entityName: "Todolist")
         request.predicate = nil
-        request.predicate = NSPredicate(format: "title = \(listToRemove.titleText) AND isPinned = \(listToRemove.isPinned)")
+        request.predicate = NSPredicate(format: "id == \(listToRemove.id)")
         do{
             let listsToRemove = try myContext.fetch(request) as! [NSManagedObject]
-            for listToRemove in listsToRemove{
-                myContext.delete(listToRemove)
+            for list in listsToRemove{
+                myContext.delete(list)
             }
             try myContext.save()
         }
@@ -101,15 +114,22 @@ class DBManager{
         }
     }
     
-    //    func getTodolist(index: Int,perPage: Int) -> [TodolistModel]{
-    //        print("DBManager from index: \(index)")
-    //        let countArray = [Int](index...index+perPage-1)
-    //        var todolistModels = [TodolistModel]()
-    //        countArray.forEach{ (count) in
-    //            let model = TodolistModel(title:count)
-    //            todolistModels.append(model)
-    //        }
-    //        return todolistModels
-    //    }
+    func updateList(){
+    }
+    
+    // mark undone list as done
+    func doneList(listToDone: TodolistCellModel){
+        let request = Todolist.fetchRequest() as NSFetchRequest<Todolist>
+        request.predicate = nil
+        request.predicate = NSPredicate(format: "id == \(listToDone.id)")
+        do{
+            let listsToDone = try myContext.fetch(request)
+            listsToDone[0].isDone = true
+            try myContext.save()
+        }
+        catch{
+            
+        }
+    }
     
 }
