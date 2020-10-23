@@ -21,17 +21,17 @@ class DBManager{
     }
     
     
-//    func fetchAllList() -> [Todolist]{
-//        var lists: [Todolist]?
-//        try! myContext.fetch(Todolist.fetchRequest())
-//        do {
-//            lists = try myContext.fetch(Todolist.fetchRequest())
-//        }
-//        catch{
-//        }
-//        let lists_all = lists ?? [Todolist]()
-//        return lists_all
-//    }
+    //    func fetchAllList() -> [Todolist]{
+    //        var lists: [Todolist]?
+    //        try! myContext.fetch(Todolist.fetchRequest())
+    //        do {
+    //            lists = try myContext.fetch(Todolist.fetchRequest())
+    //        }
+    //        catch{
+    //        }
+    //        let lists_all = lists ?? [Todolist]()
+    //        return lists_all
+    //    }
     
     //fetch pinned and undone list
     func fetchPinnedList() -> [Todolist]{
@@ -69,6 +69,8 @@ class DBManager{
         //try! myContext.fetch(Todolist.fetchRequest())
         do {
             let request = Todolist.fetchRequest() as NSFetchRequest<Todolist>
+            let pred = NSPredicate(format:"isDone = %d",true)
+            request.predicate = pred
             request.fetchLimit = perpage
             request.fetchOffset = offset
             lists = try myContext.fetch(request)
@@ -86,6 +88,7 @@ class DBManager{
         let list = Todolist(context: myContext)
         list.title = attributeInfo["title"] as? String
         list.isPinned = attributeInfo["isPinned"] as! Bool
+        list.isDone = attributeInfo["isDone"] as! Bool
         list.id = attributeInfo["id"] as! Int32
         do{
             try myContext.save()
@@ -114,7 +117,21 @@ class DBManager{
         }
     }
     
-    func updateList(){
+    func updateList(listToUpdate: TodolistCellModel, attributeInfo: [String:Any]){
+        
+        let request = Todolist.fetchRequest() as NSFetchRequest<Todolist>
+        request.predicate = nil
+        request.predicate = NSPredicate(format: "id == \(listToUpdate.id)")
+        do{
+            let listsToUpdate = try myContext.fetch(request)
+            listsToUpdate[0].title = attributeInfo["title"] as? String
+            listsToUpdate[0].isPinned = attributeInfo["isPinned"] as! Bool
+            listsToUpdate[0].isDone = attributeInfo["isDone"] as! Bool
+            try myContext.save()
+        }
+        catch{
+            
+        }
     }
     
     // mark undone list as done
@@ -125,6 +142,34 @@ class DBManager{
         do{
             let listsToDone = try myContext.fetch(request)
             listsToDone[0].isDone = true
+            try myContext.save()
+        }
+        catch{
+            
+        }
+    }
+    
+    func pinnedList(listToPinned: TodolistCellModel){
+        let request = Todolist.fetchRequest() as NSFetchRequest<Todolist>
+        request.predicate = nil
+        request.predicate = NSPredicate(format: "id == \(listToPinned.id)")
+        do{
+            let listToPinned = try myContext.fetch(request)
+            listToPinned[0].isPinned = true
+            try myContext.save()
+        }
+        catch{
+            
+        }
+    }
+    
+    func unpinnedList(listToUnpinned: TodolistCellModel){
+        let request = Todolist.fetchRequest() as NSFetchRequest<Todolist>
+        request.predicate = nil
+        request.predicate = NSPredicate(format: "id == \(listToUnpinned.id)")
+        do{
+            let listToUnpinned = try myContext.fetch(request)
+            listToUnpinned[0].isPinned = false
             try myContext.save()
         }
         catch{

@@ -11,6 +11,9 @@ import UIKit
 
 extension UIColor{
     
+    static let customBlue = UIColor.hexStringToUIColor(hex:"#ACD6FF")
+    
+    
     class func RGBA(_ r : UInt, g : UInt, b : UInt, a : CGFloat) -> UIColor {
         let redFloat = CGFloat(r) / 255.0
         let green = CGFloat(g) / 255.0
@@ -40,9 +43,9 @@ extension UIColor{
            )
        }
     
-    class func getCustomBlueColor() -> UIColor {
-        return .hexStringToUIColor(hex:"#ACD6FF")
-    }
+//    class func getCustomBlueColor() -> UIColor {
+//        return .hexStringToUIColor(hex:"#ACD6FF")
+//    }
 
     
 }

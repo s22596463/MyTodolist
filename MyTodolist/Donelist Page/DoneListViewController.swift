@@ -23,7 +23,7 @@ class DoneListViewController:  UIViewController,UITableViewDataSource,UITableVie
         let indexPaths = indices.map { IndexPath(row: $0, section: 0) }
         print("insert indexPaths\(indexPaths)")
         tableView.insertRows(at: indexPaths, with: .automatic)
-        tableView.reloadData()
+        //tableView.reloadData()
     }
     
     //    func delete(at indices: [Int]) {
@@ -36,10 +36,12 @@ class DoneListViewController:  UIViewController,UITableViewDataSource,UITableVie
         super.viewDidLoad()
         //self.view.addSubview(self.tableView)
         setupUI()
+        controller.start()
+        controller.listViewHost = self
         tableView.delegate = self
         tableView.dataSource = self
-        controller.listViewHost = self
-        controller.start()
+        //controller.listViewHost = self
+        //controller.start()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +55,7 @@ class DoneListViewController:  UIViewController,UITableViewDataSource,UITableVie
     
     func setupUI(){
         self.title = "Donelist"
-        self.navigationController?.navigationBar.barTintColor = UIColor.getCustomBlueColor()
+        self.navigationController?.navigationBar.barTintColor = .customBlue
     }
     
     

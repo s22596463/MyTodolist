@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 
 
-class TodolistViewController:  UIViewController,UITableViewDataSource,UITableViewDelegate{
+class TodolistViewController:  UIViewController{
     
     lazy var viewModel = TodolistViewModel()
     
@@ -20,8 +20,12 @@ class TodolistViewController:  UIViewController,UITableViewDataSource,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupUI()
         viewModel.initData()
+        tableView.dragInteractionEnabled = true
+        tableView.dragDelegate = self
+        tableView.dropDelegate = self
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -37,29 +41,32 @@ class TodolistViewController:  UIViewController,UITableViewDataSource,UITableVie
         switch segue.identifier{
         case "EditListViewController":
             addVC?.tag = "edit"
+            if tableView.indexPathForSelectedRow?.section == 0{
+                addVC?.listToUpdate = viewModel.pinnedListCellModels[tableView.indexPathForSelectedRow!.row]
+            }else{
+                 addVC?.listToUpdate = viewModel.unpinnedListCellModels[tableView.indexPathForSelectedRow!.row]
+            }
         case "AddListViewController":
             addVC?.tag = "add"
         default:
             print("")
         }
-        
     }
-    
     
     func setupUI(){
         self.title = "My Todolist"
-        self.navigationController?.navigationBar.barTintColor = UIColor.getCustomBlueColor()
-        let addBtn = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(TodolistViewController.addList))
+        self.navigationController?.navigationBar.barTintColor = .customBlue
+        let addBtn = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(TodolistViewController.addListBtn))
         self.navigationItem.rightBarButtonItem = addBtn
-        let doneBtn = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(TodolistViewController.doneList))
+        let doneBtn = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(TodolistViewController.doneListBtn))
         self.navigationItem.leftBarButtonItem = doneBtn
     }
     
-    @objc func addList(){
+    @objc func addListBtn(){
         performSegue(withIdentifier: "AddListViewController", sender: self)
     }
     
-    @objc func doneList(){
+    @objc func doneListBtn(){
         performSegue(withIdentifier: "DoneListViewController", sender: self)
     }
     
@@ -71,11 +78,15 @@ class TodolistViewController:  UIViewController,UITableViewDataSource,UITableVie
             indexPath.append(IndexPath(row: tableView(self.tableView, numberOfRowsInSection: 1), section: 1))
         }
         DispatchQueue.main.async {
-        self.tableView.beginUpdates()
-        self.tableView.insertRows(at: indexPath, with: .automatic)
-        self.tableView.endUpdates()
+            self.tableView.beginUpdates()
+            self.tableView.insertRows(at: indexPath, with: .automatic)
+            self.tableView.endUpdates()
         }
     }
+    
+}
+
+extension TodolistViewController: UITableViewDataSource,UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -88,6 +99,7 @@ class TodolistViewController:  UIViewController,UITableViewDataSource,UITableVie
         }else if section == 1{
             numberOfRows = viewModel.unpinnedListCellModels.count
         }
+        //print("numberOfRows\(numberOfRows)")
         return numberOfRows
     }
     
@@ -104,12 +116,43 @@ class TodolistViewController:  UIViewController,UITableViewDataSource,UITableVie
         }
         cell.setup(cellModel: cellModel!)
         print("todolistCell.setup")
+        print(cellModel!)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch (section){
+        case 0:
+            return "Pinned List"
+        case 1:
+            return "Unpinned List"
+        default:
+            return nil
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "EditListViewController", sender: self)
     }
+    
+    
+    func dragItems(for indexPath: IndexPath) -> [UIDragItem]{
+        var model: TodolistCellModel?
+        if indexPath.section == 0{
+            model = viewModel.pinnedListCellModels[indexPath.row]
+        }else if indexPath.row == 1{
+            model = viewModel.unpinnedListCellModels[indexPath.row]
+        }
+        let itemProvider = NSItemProvider(object: (model?.titleText ?? "default") as NSString)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        return [dragItem]
+    }
+    
+    func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
+        return canHandle(session)
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete"){ (action, view, completionHandler) in
@@ -134,7 +177,7 @@ class TodolistViewController:  UIViewController,UITableViewDataSource,UITableVie
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             completionHandler(true)
         }
-        doneAction.backgroundColor = UIColor.getCustomBlueColor()
+        doneAction.backgroundColor = .customBlue
         let configuration = UISwipeActionsConfiguration(actions: [ doneAction, deleteAction])
         //configuration.performsFirstActionWithFullSwipe = false
         return configuration
@@ -142,6 +185,75 @@ class TodolistViewController:  UIViewController,UITableViewDataSource,UITableVie
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("moveRowAt")
+        viewModel.moveItem(at: sourceIndexPath, to: destinationIndexPath)
+        tableView.reloadData()
+    }
+    
+}
+
+extension TodolistViewController: UITableViewDragDelegate{
+    
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        print("itemsForBeginning")
+        return dragItems(for: indexPath)
+    }
+    
+}
+
+extension TodolistViewController: UITableViewDropDelegate {
+    
+    func canHandle(_ session: UIDropSession) -> Bool {
+        print("canHandle")
+        return session.canLoadObjects(ofClass: NSString.self)
+    }
+    
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        // The .move operation is available only for dragging within a single app.
+        print("dropSessionDidUpdate")
+        if tableView.hasActiveDrag {
+            if session.items.count > 1 {
+                return UITableViewDropProposal(operation: .cancel)
+            } else {
+                return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+            }
+        } else {
+            return UITableViewDropProposal(operation: .copy, intent: .insertAtDestinationIndexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+        print("performDropWith")
+        let destinationIndexPath: IndexPath
+        
+        if let indexPath = coordinator.destinationIndexPath {
+            destinationIndexPath = indexPath
+        } else {
+            // Get last index path of table view.
+            let section = tableView.numberOfSections - 1
+            let row = tableView.numberOfRows(inSection: section)
+            destinationIndexPath = IndexPath(row: row, section: section)
+        }
+        
+        coordinator.session.loadObjects(ofClass: NSString.self) { items in
+            // Consume drag items.
+            let stringItems = items as! [String]
+            
+            var indexPaths = [IndexPath]()
+            for (index, item) in stringItems.enumerated() {
+                let indexPath = IndexPath(row: destinationIndexPath.row + index, section: destinationIndexPath.section)
+                //self.model.addItem(item, at: indexPath.row)
+                indexPaths.append(indexPath)
+            }
+            tableView.insertRows(at: indexPaths, with: .automatic)
+        }
     }
     
 }
