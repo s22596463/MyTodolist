@@ -9,25 +9,33 @@
 import Foundation
 
 struct WeatherModel: Decodable {
-    var lon: Double
-    var current: WeatherCurrent
-    var lat: Double
-    var timezone: String
+    var cnt: Int
+    var list: [WeatherList]
 }
 
-struct WeatherCurrent: Decodable {
-    var dt: TimeInterval
-    var sunrise: TimeInterval
+struct WeatherList: Decodable {
+    var sys: WeatherSys
     var weather: [WeatherWeather]
-    var sunset: TimeInterval
-    var temp: Double
-    var feels_like: Double
-    var humidity: Double
+    var main: WeatherMain
 }
 
-struct WeatherWeather: Decodable{
+struct WeatherSys: Decodable {
+    var sunrise: TimeInterval
+    var sunset: TimeInterval
+}
+
+
+struct WeatherWeather: Decodable {
     var icon: String
     var main: String
     var description: String
     var id: Double
+}
+
+struct WeatherMain: Decodable {
+    var temp: Double
+    var feels_like: Double
+    var temp_min: Double
+    var temp_max: Double
+    var humidity: Double
 }

@@ -15,13 +15,21 @@ class WeatherViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
-    var currentWeatherCellModel = CurrentWeatherCellModel()
+    var cellModel = CurrentWeatherCellModel()
+    
+    let cellSpacingHeight: CGFloat = 10
+    let cellReuseIdentifier = "CurrenWeatherCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         tableView.delegate = self
         tableView.dataSource = self
+        cellModel.getCurrentWeather {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,20 +37,35 @@ class WeatherViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     func setupUI(){
-        self.title = "Weather"
+        self.title = "Current Weather"
         self.navigationController?.navigationBar.barTintColor = .customBlue
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return cellModel.weatherList?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrenWeatherCell", for: indexPath) as? CurrentWeatherTableViewCell else{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? CurrentWeatherTableViewCell else{
                    assert(false, "Unhandled tableview cell")
                    return UITableViewCell()
                }
-        cell.setup(cellModel: currentWeatherCellModel)
+        cell.setup(cellModel: cellModel, indexPath: indexPath)
         return cell
     }
     

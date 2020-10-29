@@ -206,13 +206,11 @@ extension TodolistViewController: UITableViewDragDelegate{
 
 }
 
-extension TodolistViewController: UITableViewDropDelegate {
-    
-    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
-        print("performDropWith")
-    }
-    
-
+//extension TodolistViewController: UITableViewDropDelegate {
+//
+//    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+//    }
+//
 //    func canHandle(_ session: UIDropSession) -> Bool {
 //        return session.canLoadObjects(ofClass: NSString.self)
 //    }
@@ -257,7 +255,6 @@ extension TodolistViewController: UITableViewDropDelegate {
 //            tableView.insertRows(at: indexPaths, with: .automatic)
 //        }
 //    }
-
-}
+//}
 
 

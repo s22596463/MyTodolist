@@ -54,7 +54,7 @@ class NetworkManager<R: RouterType>{
                 do{
                     let decoder = JSONDecoder()
                     let result = try decoder.decode(D.self, from: data)
-                    print(result)
+                    //print(result)
                     completion(result,"Decoding Success",nil,true)
                 }catch let error{
                     completion(nil,"Decoding Error",error,false)

@@ -247,9 +247,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="170" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DkE-iP-zLW">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="170" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DkE-iP-zLW">
                                 <rect key="frame" x="10" y="98" width="394" height="690"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CurrenWeatherCell" id="oCj-KY-zLo" customClass="CurrentWeatherTableViewCell" customModule="MyTodolist" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="394" height="170"/>
@@ -258,8 +257,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Weather" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ypq-XQ-gR0">
-                                                    <rect key="frame" x="20" y="11" width="150" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ypq-XQ-gR0">
+                                                    <rect key="frame" x="20" y="31" width="150" height="0.0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="e4V-sH-f75"/>
                                                     </constraints>
@@ -328,7 +327,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lwM-V6-gaX">
-                                                    <rect key="frame" x="60" y="50" width="70" height="70"/>
+                                                    <rect key="frame" x="60" y="70" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="Rmg-Df-zhE"/>
                                                         <constraint firstAttribute="height" constant="70" id="bW2-dp-KYU"/>
@@ -339,7 +338,7 @@
                                                 <constraint firstItem="HMO-48-a5x" firstAttribute="top" secondItem="qHR-Pv-OIK" secondAttribute="topMargin" id="0YY-j1-JBq"/>
                                                 <constraint firstItem="Ypq-XQ-gR0" firstAttribute="leading" secondItem="qHR-Pv-OIK" secondAttribute="leadingMargin" id="2rV-c3-hnh"/>
                                                 <constraint firstItem="bgF-Uw-Xlo" firstAttribute="centerY" secondItem="rEy-F3-rw2" secondAttribute="centerY" id="8kp-1v-iZO"/>
-                                                <constraint firstItem="Ypq-XQ-gR0" firstAttribute="top" secondItem="qHR-Pv-OIK" secondAttribute="topMargin" id="E28-CI-sBo"/>
+                                                <constraint firstItem="Ypq-XQ-gR0" firstAttribute="top" secondItem="qHR-Pv-OIK" secondAttribute="topMargin" constant="20" id="E28-CI-sBo"/>
                                                 <constraint firstItem="rEy-F3-rw2" firstAttribute="leading" secondItem="HMO-48-a5x" secondAttribute="leading" id="FTw-bp-eWo"/>
                                                 <constraint firstItem="jI3-XZ-SwD" firstAttribute="centerY" secondItem="e3P-Vc-y8I" secondAttribute="centerY" id="Go4-sX-JLz"/>
                                                 <constraint firstItem="3gR-pB-acL" firstAttribute="centerY" secondItem="skh-jl-7tV" secondAttribute="centerY" id="HkP-jR-xNJ"/>
@@ -355,7 +354,7 @@
                                                 <constraint firstItem="asF-hp-fgl" firstAttribute="leading" secondItem="HMO-48-a5x" secondAttribute="leading" id="cRD-Gj-t1F"/>
                                                 <constraint firstItem="skh-jl-7tV" firstAttribute="leading" secondItem="HMO-48-a5x" secondAttribute="leading" id="f3M-ZI-Bwg"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="bgF-Uw-Xlo" secondAttribute="trailing" id="hkN-8E-ZbQ"/>
-                                                <constraint firstAttribute="centerY" secondItem="lwM-V6-gaX" secondAttribute="centerY" id="kDJ-U3-JRk"/>
+                                                <constraint firstAttribute="centerY" secondItem="lwM-V6-gaX" secondAttribute="centerY" constant="-20" id="kDJ-U3-JRk"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="brW-yk-aOZ" secondAttribute="trailing" id="nQH-ds-aXj"/>
                                                 <constraint firstItem="lwM-V6-gaX" firstAttribute="centerX" secondItem="Ypq-XQ-gR0" secondAttribute="centerX" id="tdy-Ba-NgH"/>
                                                 <constraint firstItem="e3P-Vc-y8I" firstAttribute="top" secondItem="rEy-F3-rw2" secondAttribute="bottom" constant="10" id="tli-Xz-zxs"/>
@@ -363,6 +362,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cityNameLabel" destination="Ypq-XQ-gR0" id="aaZ-GU-Xmx"/>
                                             <outlet property="feelLikeLabel" destination="bgF-Uw-Xlo" id="cgb-MX-GKt"/>
                                             <outlet property="humidityLabel" destination="jI3-XZ-SwD" id="Rmy-sW-gRl"/>
                                             <outlet property="sunriseLabel" destination="brW-yk-aOZ" id="sPF-t4-z24"/>
