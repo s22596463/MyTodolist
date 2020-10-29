@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4B3CA715253829FE00D17FA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA714253829FE00D17FA8 /* AppDelegate.swift */; };
 		4B3CA717253829FE00D17FA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA716253829FE00D17FA8 /* SceneDelegate.swift */; };
-		4B3CA719253829FE00D17FA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA718253829FE00D17FA8 /* ViewController.swift */; };
 		4B3CA71C253829FE00D17FA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B3CA71A253829FE00D17FA8 /* Main.storyboard */; };
 		4B3CA71F253829FE00D17FA8 /* MyTodolist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA71D253829FE00D17FA8 /* MyTodolist.xcdatamodeld */; };
 		4B3CA72125382A0200D17FA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B3CA72025382A0200D17FA8 /* Assets.xcassets */; };
@@ -31,6 +30,12 @@
 		4B45FC5E25417F7C00DB521D /* Todolist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B45FC5C25417F7C00DB521D /* Todolist+CoreDataProperties.swift */; };
 		4B45FC602542AF2200DB521D /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B45FC5F2542AF2100DB521D /* TabBarViewController.swift */; };
 		4B45FC622542B7BE00DB521D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B45FC612542B7BE00DB521D /* WeatherViewController.swift */; };
+		4B51F110254941D200D57D5E /* UIIamgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B51F10F254941D200D57D5E /* UIIamgeView.swift */; };
+		4B51F11225494B8200D57D5E /* CurrentWeatherCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B51F11125494B8200D57D5E /* CurrentWeatherCellModel.swift */; };
+		4B51F11425494BA600D57D5E /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B51F11325494BA600D57D5E /* WeatherTableViewCell.swift */; };
+		4BC702BA25467816000ED7E8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC702B925467816000ED7E8 /* NetworkManager.swift */; };
+		4BC702BC2546966A000ED7E8 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC702BB2546966A000ED7E8 /* WeatherModel.swift */; };
+		4BC702BE2546A29C000ED7E8 /* WeatherRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC702BD2546A29C000ED7E8 /* WeatherRouter.swift */; };
 		6C07160481700B6A93D72847 /* Pods_MyTodolist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B5F12E85AC9624C691E61D /* Pods_MyTodolist.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +43,6 @@
 		4B3CA711253829FE00D17FA8 /* MyTodolist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTodolist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B3CA714253829FE00D17FA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B3CA716253829FE00D17FA8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4B3CA718253829FE00D17FA8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4B3CA71B253829FE00D17FA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4B3CA71E253829FE00D17FA8 /* MyTodolist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyTodolist.xcdatamodel; sourceTree = "<group>"; };
 		4B3CA72025382A0200D17FA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,6 +65,12 @@
 		4B45FC5C25417F7C00DB521D /* Todolist+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todolist+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4B45FC5F2542AF2100DB521D /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4B45FC612542B7BE00DB521D /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		4B51F10F254941D200D57D5E /* UIIamgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIIamgeView.swift; sourceTree = "<group>"; };
+		4B51F11125494B8200D57D5E /* CurrentWeatherCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherCellModel.swift; sourceTree = "<group>"; };
+		4B51F11325494BA600D57D5E /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
+		4BC702B925467816000ED7E8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		4BC702BB2546966A000ED7E8 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		4BC702BD2546A29C000ED7E8 /* WeatherRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRouter.swift; sourceTree = "<group>"; };
 		C7BEF0C55C340262C87FB9A2 /* Pods-MyTodolist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTodolist.debug.xcconfig"; path = "Target Support Files/Pods-MyTodolist/Pods-MyTodolist.debug.xcconfig"; sourceTree = "<group>"; };
 		D1B5F12E85AC9624C691E61D /* Pods_MyTodolist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyTodolist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3EBB062A498F09CF9DF9AB5 /* Pods-MyTodolist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTodolist.release.xcconfig"; path = "Target Support Files/Pods-MyTodolist/Pods-MyTodolist.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,7 +117,7 @@
 				4B3CA72025382A0200D17FA8 /* Assets.xcassets */,
 				4B3CA72525382A0200D17FA8 /* Info.plist */,
 				4B3CA71D253829FE00D17FA8 /* MyTodolist.xcdatamodeld */,
-				4B3CA7452538343600D17FA8 /* DBManager.swift */,
+				4B51F117254A64B200D57D5E /* Manager */,
 				4B459885253FF04E0077F99A /* Model */,
 				4B3CA74F25384A9D00D17FA8 /* Extension */,
 				4B3CA7382538331E00D17FA8 /* Protocol */,
@@ -115,7 +125,6 @@
 				4B3CA74A2538423800D17FA8 /* Addlist Page */,
 				4B45FC502541445100DB521D /* Donelist Page */,
 				4B45FC632542B7C300DB521D /* Weather */,
-				4B3CA718253829FE00D17FA8 /* ViewController.swift */,
 			);
 			path = MyTodolist;
 			sourceTree = "<group>";
@@ -152,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				4B3CA75025384AAF00D17FA8 /* UIColor.swift */,
+				4B51F10F254941D200D57D5E /* UIIamgeView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -180,8 +190,21 @@
 			isa = PBXGroup;
 			children = (
 				4B45FC612542B7BE00DB521D /* WeatherViewController.swift */,
+				4B51F11325494BA600D57D5E /* WeatherTableViewCell.swift */,
+				4B51F11125494B8200D57D5E /* CurrentWeatherCellModel.swift */,
+				4BC702BD2546A29C000ED7E8 /* WeatherRouter.swift */,
+				4BC702BB2546966A000ED7E8 /* WeatherModel.swift */,
 			);
 			path = Weather;
+			sourceTree = "<group>";
+		};
+		4B51F117254A64B200D57D5E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				4BC702B925467816000ED7E8 /* NetworkManager.swift */,
+				4B3CA7452538343600D17FA8 /* DBManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		99504AAA5177E48A67275FA7 /* Pods */ = {
@@ -316,27 +339,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B3CA719253829FE00D17FA8 /* ViewController.swift in Sources */,
 				4B45FC58254146B600DB521D /* DoneListController.swift in Sources */,
 				4B45FC5A2541592D00DB521D /* TodolistViewModel.swift in Sources */,
 				4B45FC52254144B500DB521D /* DoneListCellModel.swift in Sources */,
+				4BC702BA25467816000ED7E8 /* NetworkManager.swift in Sources */,
 				4B45FC622542B7BE00DB521D /* WeatherViewController.swift in Sources */,
 				4B3CA73C2538336200D17FA8 /* ListViewHost.swift in Sources */,
 				4B45FC4D254143C600DB521D /* DoneListViewController.swift in Sources */,
 				4B3CA7462538343600D17FA8 /* DBManager.swift in Sources */,
 				4B3CA73E2538339600D17FA8 /* TodolistViewController.swift in Sources */,
+				4B51F110254941D200D57D5E /* UIIamgeView.swift in Sources */,
 				4B45FC602542AF2200DB521D /* TabBarViewController.swift in Sources */,
 				4B3CA75125384AAF00D17FA8 /* UIColor.swift in Sources */,
 				4B45FC5D25417F7C00DB521D /* Todolist+CoreDataClass.swift in Sources */,
 				4B45FC4F2541443C00DB521D /* DoneListTableViewCell.swift in Sources */,
 				4B3CA74C2538425400D17FA8 /* AddListViewController.swift in Sources */,
 				4B3CA7442538341300D17FA8 /* TodolistCellModel.swift in Sources */,
+				4B51F11225494B8200D57D5E /* CurrentWeatherCellModel.swift in Sources */,
 				4B3CA742253833F000D17FA8 /* TodolistTableViewCell.swift in Sources */,
 				4B3CA715253829FE00D17FA8 /* AppDelegate.swift in Sources */,
 				4B45FC5E25417F7C00DB521D /* Todolist+CoreDataProperties.swift in Sources */,
+				4BC702BC2546966A000ED7E8 /* WeatherModel.swift in Sources */,
 				4B3CA73A2538333A00D17FA8 /* Pagination.swift in Sources */,
 				4B3CA717253829FE00D17FA8 /* SceneDelegate.swift in Sources */,
 				4B3CA71F253829FE00D17FA8 /* MyTodolist.xcdatamodeld in Sources */,
+				4B51F11425494BA600D57D5E /* WeatherTableViewCell.swift in Sources */,
+				4BC702BE2546A29C000ED7E8 /* WeatherRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
