@@ -10,5 +10,8 @@ target 'MyTodolist' do
   # Network
   pod 'SwiftyJSON'
   pod 'Alamofire', "~> 4.9.0"
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'SnapKit'
 
 end

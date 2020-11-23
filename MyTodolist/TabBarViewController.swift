@@ -25,6 +25,8 @@ class TabBarViewController: UITabBarController{
         
         tabBar.items?[0].title = "Weather"
         tabBar.items?[1].title = "MyTodolist"
+        tabBar.items?[2].title = "Rx Practice"
+        tabBar.items?[3].title = "Rx Practice"
     }
     
 }

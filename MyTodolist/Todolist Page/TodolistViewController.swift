@@ -25,7 +25,7 @@ class TodolistViewController:  UIViewController{
         viewModel.initData()
         tableView.dragInteractionEnabled = true
         tableView.dragDelegate = self
-        tableView.dropDelegate = self
+        //tableView.dropDelegate = self
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -54,7 +54,8 @@ class TodolistViewController:  UIViewController{
     }
     
     func setupUI(){
-        self.title = "My Todolist"
+        //self.title = "My Todolist"
+        self.navigationItem.title = "My Todolist"
         self.navigationController?.navigationBar.barTintColor = .customBlue
         let addBtn = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(TodolistViewController.addListBtn))
         self.navigationItem.rightBarButtonItem = addBtn

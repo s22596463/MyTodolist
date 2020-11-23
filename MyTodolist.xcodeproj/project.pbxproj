@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B02F9EB25552D8C0072C74B /* RxWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B02F9EA25552D8C0072C74B /* RxWeatherViewController.swift */; };
+		4B02F9ED25552EAA0072C74B /* RxWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B02F9EC25552EAA0072C74B /* RxWeatherTableViewCell.swift */; };
+		4B02F9F0255533AA0072C74B /* RxWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B02F9EF255533AA0072C74B /* RxWeatherViewModel.swift */; };
+		4B02F9F22555348C0072C74B /* RxWeatherRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B02F9F12555348C0072C74B /* RxWeatherRouter.swift */; };
+		4B02F9F42555349A0072C74B /* RxWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B02F9F32555349A0072C74B /* RxWeatherModel.swift */; };
 		4B3CA715253829FE00D17FA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA714253829FE00D17FA8 /* AppDelegate.swift */; };
 		4B3CA717253829FE00D17FA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA716253829FE00D17FA8 /* SceneDelegate.swift */; };
 		4B3CA71C253829FE00D17FA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B3CA71A253829FE00D17FA8 /* Main.storyboard */; };
@@ -21,6 +26,8 @@
 		4B3CA7462538343600D17FA8 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA7452538343600D17FA8 /* DBManager.swift */; };
 		4B3CA74C2538425400D17FA8 /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA74B2538425400D17FA8 /* AddListViewController.swift */; };
 		4B3CA75125384AAF00D17FA8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CA75025384AAF00D17FA8 /* UIColor.swift */; };
+		4B44AB6F256B617E0031CB73 /* RxSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B44AB6E256B617E0031CB73 /* RxSignUpViewController.swift */; };
+		4B44AB71256B63720031CB73 /* RxSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B44AB70256B63720031CB73 /* RxSignUpViewModel.swift */; };
 		4B45FC4D254143C600DB521D /* DoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B45FC4C254143C600DB521D /* DoneListViewController.swift */; };
 		4B45FC4F2541443C00DB521D /* DoneListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B45FC4E2541443C00DB521D /* DoneListTableViewCell.swift */; };
 		4B45FC52254144B500DB521D /* DoneListCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B45FC51254144B500DB521D /* DoneListCellModel.swift */; };
@@ -40,6 +47,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B02F9EA25552D8C0072C74B /* RxWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxWeatherViewController.swift; sourceTree = "<group>"; };
+		4B02F9EC25552EAA0072C74B /* RxWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxWeatherTableViewCell.swift; sourceTree = "<group>"; };
+		4B02F9EF255533AA0072C74B /* RxWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxWeatherViewModel.swift; sourceTree = "<group>"; };
+		4B02F9F12555348C0072C74B /* RxWeatherRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxWeatherRouter.swift; sourceTree = "<group>"; };
+		4B02F9F32555349A0072C74B /* RxWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxWeatherModel.swift; sourceTree = "<group>"; };
 		4B3CA711253829FE00D17FA8 /* MyTodolist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTodolist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B3CA714253829FE00D17FA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B3CA716253829FE00D17FA8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +68,8 @@
 		4B3CA7452538343600D17FA8 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		4B3CA74B2538425400D17FA8 /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		4B3CA75025384AAF00D17FA8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		4B44AB6E256B617E0031CB73 /* RxSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxSignUpViewController.swift; sourceTree = "<group>"; };
+		4B44AB70256B63720031CB73 /* RxSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSignUpViewModel.swift; sourceTree = "<group>"; };
 		4B45FC4C254143C600DB521D /* DoneListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneListViewController.swift; sourceTree = "<group>"; };
 		4B45FC4E2541443C00DB521D /* DoneListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneListTableViewCell.swift; sourceTree = "<group>"; };
 		4B45FC51254144B500DB521D /* DoneListCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneListCellModel.swift; sourceTree = "<group>"; };
@@ -88,6 +102,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B02F9EE255532630072C74B /* RxWeather */ = {
+			isa = PBXGroup;
+			children = (
+				4B02F9EC25552EAA0072C74B /* RxWeatherTableViewCell.swift */,
+				4B02F9EF255533AA0072C74B /* RxWeatherViewModel.swift */,
+				4B02F9EA25552D8C0072C74B /* RxWeatherViewController.swift */,
+				4B02F9F12555348C0072C74B /* RxWeatherRouter.swift */,
+				4B02F9F32555349A0072C74B /* RxWeatherModel.swift */,
+			);
+			path = RxWeather;
+			sourceTree = "<group>";
+		};
 		4B3CA708253829FE00D17FA8 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +139,8 @@
 				4B3CA716253829FE00D17FA8 /* SceneDelegate.swift */,
 				4B45FC5F2542AF2100DB521D /* TabBarViewController.swift */,
 				4B3CA71A253829FE00D17FA8 /* Main.storyboard */,
+				4B44AB6D256B617E0031CB73 /* RxSignUp */,
+				4B02F9EE255532630072C74B /* RxWeather */,
 				4B3CA72225382A0200D17FA8 /* LaunchScreen.storyboard */,
 				4B3CA72025382A0200D17FA8 /* Assets.xcassets */,
 				4B3CA72525382A0200D17FA8 /* Info.plist */,
@@ -164,6 +192,15 @@
 				4B51F10F254941D200D57D5E /* UIIamgeView.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		4B44AB6D256B617E0031CB73 /* RxSignUp */ = {
+			isa = PBXGroup;
+			children = (
+				4B44AB6E256B617E0031CB73 /* RxSignUpViewController.swift */,
+				4B44AB70256B63720031CB73 /* RxSignUpViewModel.swift */,
+			);
+			path = RxSignUp;
 			sourceTree = "<group>";
 		};
 		4B459885253FF04E0077F99A /* Model */ = {
@@ -349,13 +386,20 @@
 				4B3CA7462538343600D17FA8 /* DBManager.swift in Sources */,
 				4B3CA73E2538339600D17FA8 /* TodolistViewController.swift in Sources */,
 				4B51F110254941D200D57D5E /* UIIamgeView.swift in Sources */,
+				4B02F9F42555349A0072C74B /* RxWeatherModel.swift in Sources */,
+				4B02F9F0255533AA0072C74B /* RxWeatherViewModel.swift in Sources */,
 				4B45FC602542AF2200DB521D /* TabBarViewController.swift in Sources */,
 				4B3CA75125384AAF00D17FA8 /* UIColor.swift in Sources */,
+				4B02F9F22555348C0072C74B /* RxWeatherRouter.swift in Sources */,
+				4B02F9ED25552EAA0072C74B /* RxWeatherTableViewCell.swift in Sources */,
 				4B45FC5D25417F7C00DB521D /* Todolist+CoreDataClass.swift in Sources */,
 				4B45FC4F2541443C00DB521D /* DoneListTableViewCell.swift in Sources */,
 				4B3CA74C2538425400D17FA8 /* AddListViewController.swift in Sources */,
 				4B3CA7442538341300D17FA8 /* TodolistCellModel.swift in Sources */,
 				4B51F11225494B8200D57D5E /* CurrentWeatherCellModel.swift in Sources */,
+				4B44AB71256B63720031CB73 /* RxSignUpViewModel.swift in Sources */,
+				4B02F9EB25552D8C0072C74B /* RxWeatherViewController.swift in Sources */,
+				4B44AB6F256B617E0031CB73 /* RxSignUpViewController.swift in Sources */,
 				4B3CA742253833F000D17FA8 /* TodolistTableViewCell.swift in Sources */,
 				4B3CA715253829FE00D17FA8 /* AppDelegate.swift in Sources */,
 				4B45FC5E25417F7C00DB521D /* Todolist+CoreDataProperties.swift in Sources */,
